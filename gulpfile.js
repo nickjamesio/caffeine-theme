@@ -47,7 +47,22 @@ src = {
             "node_modules/prismjs/prism.js",
             "node_modules/toastr/build/toastr.min.js",
             "node_modules/store/dist/store.modern.min.js"
-        ]
+        ],
+        prismjs_components: [
+            "node_modules/prismjs/components/prism-bash.min.js",
+            "node_modules/prismjs/components/prism-css.min.js",
+            "node_modules/prismjs/components/prism-css-extras.min.js",
+            "node_modules/prismjs/components/prism-diff.min.js",
+            "node_modules/prismjs/components/prism-docker.min.js",
+            "node_modules/prismjs/components/prism-git.min.js",
+            "node_modules/prismjs/components/prism-ini.min.js",
+            "node_modules/prismjs/components/prism-json.min.js",
+            "node_modules/prismjs/components/prism-jsx.min.js",
+            "node_modules/prismjs/components/prism-nginx.min.js",
+            "node_modules/prismjs/components/prism-python.min.js",
+            "node_modules/prismjs/components/prism-scss.min.js",
+            "node_modules/prismjs/components/prism-yaml.min.js",
+        ],
     },
     css: {
         main: "assets/css/" + dist.name + ".css",
@@ -92,6 +107,7 @@ function js() {
         .pipe(gulp.src(src.js.main))
         .pipe(changed(dist.js))
         .pipe(gulp.src(src.js.node_modules))
+        .pipe(gulp.src(src.js.prismjs_components))
         .pipe(concat(dist.name + ".js"))
         .pipe(uglify({
             mangle: false
